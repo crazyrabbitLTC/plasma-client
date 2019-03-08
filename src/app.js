@@ -7,10 +7,12 @@ const dbPaths = require('../src/db-paths')
 const defaultOptions = {
   port: '9898',
   dbProvider: LevelDBProvider,
-  operatorProvider: PlasmaCore.providers.OperatorProviders.HttpOperatorProvider,
-  contractProvider: PlasmaCore.providers.ContractProviders.ContractProvider,
+  operatorProvider: PlasmaCore.providers.OperatorProvider,
+  contractProvider: PlasmaCore.providers.ContractProvider,
   walletProvider: PlasmaCore.providers.WalletProviders.LocalWalletProvider,
-  dbPath: dbPaths.CHAIN_DB_PATH
+  dbOptions: {
+    dbPath: dbPaths.BASE_DB_PATH
+  }
 }
 
 /**

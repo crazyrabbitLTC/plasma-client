@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const core = require('plasma-core')
-const BaseService = core.providers.BaseService
+const BaseService = core.providers.base.BaseService
 
 /**
  * Runs a JSON-RPC server and handles incoming requests.
@@ -17,7 +17,9 @@ class RPCServerService extends BaseService {
     this.expressApp.use(bodyParser.json())
 
     this.expressApp.post('/', async (req, res) => {
-      const response = await this.app.services.jsonrpc.handleRawRequest(req.body)
+      const response = await this.app.services.jsonrpc.handleRawRequest(
+        req.body
+      )
       res.json(response)
     })
   }

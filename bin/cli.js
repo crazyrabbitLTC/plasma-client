@@ -166,6 +166,14 @@ program
   })
 
 program
+  .command('listtoken <address>')
+  .description('lists a new ERC20 so it can be deposited')
+  .action(async (address) => {
+    const listingTx = await client().listToken(address)
+    console.log(`Listing TX: ${listingTx.transactionHash}`)
+  })
+
+program
   .command('killdb')
   .description('removes all stored chain data but does not remove private keys')
   .action(async () => {

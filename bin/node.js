@@ -10,7 +10,7 @@ const pkg = require('../package.json')
 program
   .version('0.0.1')
   .option('-r, --registry <address>', 'Plasma chain registry address', '0x18d8BD44a01fb8D5f295a2B3Ab15789F26385df7')
-  .option('-c, --chain <name>', 'Name of the plasma chain to connect to.', 'PG-beta.11')
+  .option('-c, --chain <name>', 'Name of the plasma chain to connect to.', 'PG-beta.14')
   .option('-e, --ethereum <endpoint>', 'Endpoint of the Ethereum node to connect to.', 'https://rinkeby.infura.io/v3/fce31f1fb2d54caa9b31ed7d28437fa5')
   .option('-h, --hostname <hostname>', 'Host to run the client on.', 'localhost')
   .option('-p, --port <port>', 'Port to run the client on.', '9898')
@@ -31,9 +31,9 @@ const options = {
   port: program.port,
   ethereumEndpoint: program.ethereum,
   debug: `service:*,${debug}`,
-  contractProvider: PlasmaCore.providers.ContractProviders.ContractProvider,
+  contractProvider: PlasmaCore.providers.ContractProvider,
   walletProvider: wallets[program.wallet],
-  operatorProvider: PlasmaCore.providers.OperatorProviders.HttpOperatorProvider,
+  operatorProvider: PlasmaCore.providers.OperatorProvider,
   plasmaChainName: program.chain,
   registryAddress: program.registry
 }
@@ -47,7 +47,7 @@ const getSectionTitle = (title) => {
 
 (async () => {
   const latest = await latestVersion(pkg.name)
-  if (pkg.version !== latest) {
+  if (pkg.version < latest) {
     console.log(colors.red('ERROR: ') + 'Your plasma-client is out of date.')
     console.log('Please update to the latest version by running:')
     console.log(colors.green('npm install -g --upgrade plasma-client'))

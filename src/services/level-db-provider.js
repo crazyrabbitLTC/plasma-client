@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const levelup = require('levelup')
 const leveldown = require('leveldown')
 const core = require('plasma-core')
@@ -11,7 +12,7 @@ class LevelDBProvider extends BaseDBProvider {
   constructor (options) {
     super(options)
 
-    this.dbPath = options.dbPath
+    this.dbPath = path.join(options.dbPath, options.name, options.id || '')
     if (!fs.existsSync(this.dbPath)) {
       fs.mkdirSync(this.dbPath, { recursive: true })
     }
