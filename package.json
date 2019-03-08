@@ -42,6 +42,7 @@
     "latest-version": "^4.0.0",
     "leveldown": "^4.0.1",
     "levelup": "^4.0.0",
+    "mkdirp": "^0.5.1",
     "plasma-core": "^0.0.4-beta.42",
     "plasma-js-lib": "^0.0.4-beta.10",
     "plasma-utils": "0.0.4-beta.3",

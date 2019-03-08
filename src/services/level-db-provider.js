@@ -1,4 +1,5 @@
 const fs = require('fs')
+const mkdirp = require('mkdirp')
 const path = require('path')
 const levelup = require('levelup')
 const leveldown = require('leveldown')
@@ -14,12 +15,12 @@ class LevelDBProvider extends BaseDBProvider {
 
     this.dbPath = path.join(options.dbPath, options.name, options.id || '')
     if (!fs.existsSync(this.dbPath)) {
-      fs.mkdirSync(this.dbPath, { recursive: true })
+      mkdirp.sync(this.dbPath)
     }
     this.db = levelup(leveldown(this.dbPath))
   }
 
-  async _onStop () {
+  async stop () {
     return this.db.close()
   }
 
