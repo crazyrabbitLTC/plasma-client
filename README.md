@@ -150,7 +150,10 @@ npm ERR!   path: '/usr/local/lib/node_modules' }
 Don't worry, you're not doing anything wrong!
 This has to do with how `Node.js` installs things -- sometimes it tries to install stuff in places it doesn't have permission to install.
 There are a few ways to get around this problem.
-First, try following [these instructions](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md), then restart your terminal and try installing `plasma-client` again.
+
+The best way to solve the EACCESS permission problems is to [install NVM (Node Version Manager)](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally). This allows you to bypas this error without needing to use sudo or root and gives you the ability to selectively use different node versions. 
+
+If this doesn't worth then you can try following [these instructions](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md), then restart your terminal and try installing `plasma-client` again.
 If you can't get that to work, you can also try installing as root:
 
 ```
